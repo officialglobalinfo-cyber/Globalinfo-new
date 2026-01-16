@@ -1,0 +1,165 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Import Fonts - Managed in app.css */
+
+:root {
+    --paper-bg: #ffffff;
+    --paper-dark: #f1f5f9;
+    --ink-black: #0f172a;
+    --ink-gray: #475569;
+    --accent-red: #f43f5e;
+    --border-color: #cbd5e1;
+    --primary: #4f46e5;
+    --secondary: #64748b;
+    --bg-color: var(--paper-bg);
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    background-color: var(--paper-bg);
+    color: var(--ink-black);
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Poppins", sans-serif;
+
+    line-height: 1.1;
+}
+
+/* Links */
+/* Global Selection */
+::selection {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Utilities */
+.bg-paper {
+    background-color: var(--paper-bg);
+}
+
+.bg-paper-dark {
+    background-color: var(--paper-dark);
+}
+
+.text-ink {
+    color: var(--ink-black);
+}
+
+.border-ink {
+    border-color: var(--border-color);
+}
+
+.font-sans-caption {
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Newspaper Components */
+.paper-border-b {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.paper-border-t {
+    border-top: 1px solid var(--border-color);
+}
+
+.paper-border-r {
+    border-right: 1px solid var(--border-color);
+}
+
+.paper-double-border {
+    border-top: 3px double var(--border-color);
+    border-bottom: 3px double var(--border-color);
+}
+
+.drop-cap::first-letter {
+    float: left;
+    font-size: 3.8rem;
+    line-height: 0.8;
+    font-weight: 700;
+    padding-right: 12px;
+    padding-top: 8px;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Ticker Animation */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 35s linear infinite;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+/* Helper to force paper style on existing components */
+.force-paper * {
+    font-family: "Poppins", sans-serif;
+    background-color: transparent !important;
+    color: var(--ink-black) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--paper-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ink-black);
+}
