@@ -114,6 +114,9 @@
 
         <!-- Sidebar (Classic Column) -->
         <aside class="lg:w-1/3 space-y-10 pl-0 lg:pl-8 border-l border-neutral-300">
+             
+           
+
             <!-- Author Card -->
              <div class="bg-paper-dark p-6 border border-black text-center">
                  <div class="w-20 h-20 mx-auto rounded-full border border-black mb-4 overflow-hidden">
@@ -142,6 +145,27 @@
                     @endforeach
                 </div>
             </div>
+              <!-- Table of Contents Widget -->
+             @if(count($toc) > 0)
+             <div class="bg-neutral-50 border border-black p-6 sticky top-8 z-10">
+                 <h3 class="font-sans font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-3 mb-4 flex items-center gap-2">
+                     <i class="fa-solid fa-list-ul text-accent-red"></i> In This Article
+                 </h3>
+                 <nav>
+                     <ul class="space-y-3 font-serif text-sm">
+                         @foreach($toc as $item)
+                         <li class="{{ $item['level'] <= 2 ? '' : ($item['level'] == 3 ? 'pl-4' : ($item['level'] == 4 ? 'pl-8' : 'pl-12')) }}">
+                             <a href="#{{ $item['id'] }}" 
+                                class="block text-neutral-600 hover:text-black hover:underline transition-colors leading-tight"
+                                @click.prevent="document.getElementById('{{ $item['id'] }}').scrollIntoView({ behavior: 'smooth' })">
+                                 {{ $item['title'] }}
+                             </a>
+                         </li>
+                         @endforeach
+                     </ul>
+                 </nav>
+             </div>
+             @endif
             
             <!-- Newsletter -->
             <div class="border-y-4 border-double border-black py-8 text-center">

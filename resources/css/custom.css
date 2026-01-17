@@ -35,7 +35,7 @@
 :root {
     --paper-bg: #ffffff;
     --paper-dark: #f1f5f9;
-    --ink-black: #0f172a;
+    --ink-black: #111111;
     --ink-gray: #475569;
     --accent-red: #f43f5e;
     --border-color: #cbd5e1;
@@ -162,4 +162,25 @@ h6 {
 
 ::-webkit-scrollbar-thumb {
     background: var(--ink-black);
+}
+
+/* Custom Marquee for Global Info */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-marquee {
+    display: inline-block;
+    animation: marquee 45s linear infinite;
+    /* Slow speed */
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
 }

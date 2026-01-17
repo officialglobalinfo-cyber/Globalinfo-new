@@ -29,8 +29,9 @@ class HomePage extends Component
         }
 
         return view('livewire.home-page', [
-            'featuredPosts' => \App\Models\News::where('is_featured', true)->where('status', 'published')->take(5)->get(),
+            'featuredPosts' => \App\Models\News::where('status', 'published')->latest()->take(2)->get()->shuffle(),
             'trendingPosts' => \App\Models\News::where('is_breaking', true)->where('status', 'published')->latest()->take(10)->get(), 
+            'dontMissPosts' => \App\Models\News::where('status', 'published')->inRandomOrder()->take(3)->get(),
             'latestPosts' => \App\Models\News::where('status', 'published')->latest()->take(25)->get(),
             'editorPicks' => \App\Models\News::where('is_featured', true)->where('status', 'published')->skip(5)->take(10)->get(),
             'sportsPosts' => \App\Models\News::where('category_id', 5)->where('status', 'published')->latest()->take(10)->get(),

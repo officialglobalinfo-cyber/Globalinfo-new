@@ -1,4 +1,4 @@
-<footer class="bg-slate-50 text-neutral-900 pt-16 pb-8 border-t-8 border-double border-black font-serif relative">
+<footer class="bg-slate-50 text-neutral-900 pt-16 pb-4 border-t-8 border-double border-black font-serif relative">
     
     <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
         
@@ -15,7 +15,7 @@
         </div>
 
         <!-- Main Footer Links Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0 mb-16 border-b border-black pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0 mb-8 border-b border-black pb-12">
             
             <!-- Column 1: Editorial -->
             <div class="lg:pr-8 lg:border-r border-black/20">
@@ -73,7 +73,7 @@
         </div>
 
         <!-- Footer Bottom -->
-        <div class="font-sans text-[10px] font-bold uppercase tracking-widest flex flex-col md:flex-row justify-between items-center text-neutral-400 pb-8 gap-4">
+        <div class="font-sans text-[10px] font-bold uppercase tracking-widest flex flex-col md:flex-row justify-between items-center text-neutral-400 pb-4 gap-4">
             <p>&copy; {{ date('Y') }} Global Info Network. All rights reserved.</p>
             <div class="flex gap-6">
                 <a href="{{ route('privacy') }}" class="hover:text-black transition-colors" wire:navigate>Privacy</a>

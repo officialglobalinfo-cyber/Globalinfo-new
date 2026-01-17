@@ -49,7 +49,7 @@
                             <div class="flex items-center gap-2 text-[10px] font-bold text-accent-red uppercase tracking-wider mb-2 font-sans">
                                 <span>{{ $post->category->name }}</span>
                                 <span class="text-neutral-400">&bull;</span>
-                                <span class="text-neutral-500">{{ $post->created_at->format('M d, Y') }}</span>
+                                <span class="text-neutral-500">{{ $post->created_at->format('M d, Y') }} {{ $post->created_at->diffForHumans() }}</span>
                             </div>
                             <h3 class="text-2xl font-bold leading-tight text-ink group-hover:underline transition mb-3 font-serif">
                                 <a href="{{ route('post', $post->slug) }}" wire:navigate>{{ $post->title }}</a>
@@ -78,18 +78,27 @@
             <!-- Sidebar -->
             <aside class="lg:w-1/3 space-y-10 pl-0 lg:pl-8 border-l border-neutral-300">
                  <!-- Categories Widget -->
-                <div class="bg-paper p-0">
-                    <h3 class="font-sans-caption font-bold border-b border-black mb-4 pb-1">Sections</h3>
-                    <ul class="space-y-0 divide-y divide-neutral-200 border-x border-t border-b border-neutral-200">
+                <!-- Premium Sections Widget -->
+                <div class="bg-white border border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6">
+                    <h3 class="font-sans font-bold text-xs uppercase tracking-widest border-b-2 border-black pb-3 mb-6 flex items-center gap-2 pb-2">
+                        <i class="fa-solid fa-layer-group text-accent-red"></i> Sections
+                    </h3>
+                    <div class="flex flex-col gap-2">
                         @foreach($categories as $cat)
-                        <li>
-                            <a href="{{ route('category', $cat->slug) }}" class="flex justify-between items-center px-4 py-3 bg-paper hover:bg-paper-dark group transition" wire:navigate>
-                                <span class="text-xs font-bold uppercase font-sans {{ $cat->id == $category->id ? 'text-accent-red pl-2' : 'text-neutral-600' }} transition-all">{{ $cat->name }}</span>
-                                <span class="text-[10px] bg-neutral-200 text-neutral-600 px-2 py-0.5 rounded-full">{{ $cat->news_count }}</span>
-                            </a>
-                        </li>
+                        <a href="{{ route('category', $cat->slug) }}" 
+                           class="group relative flex justify-between items-center px-4 py-3 border border-neutral-200 bg-neutral-50 hover:bg-white hover:border-black transition-all duration-300 {{ $cat->id == $category->id ? 'border-l-4 border-l-accent-red bg-amber-50 font-bold border-black' : 'border-l hover:border-l-4 hover:border-l-black' }}" 
+                           wire:navigate>
+                            
+                            <span class="text-xs uppercase font-sans tracking-wider relative z-10 {{ $cat->id == $category->id ? 'text-black' : 'text-neutral-600 group-hover:text-black' }}">
+                                {{ $cat->name }}
+                            </span>
+                            
+                            <span class="text-[10px] font-bold bg-neutral-200 text-neutral-600 px-2 py-0.5 rounded-sm group-hover:bg-black group-hover:text-white transition-colors">
+                                {{ $cat->news_count }}
+                            </span>
+                        </a>
                         @endforeach
-                    </ul>
+                    </div>
                 </div>
 
                 <!-- Popular Posts -->
@@ -101,7 +110,7 @@
                             <span class="text-3xl font-black text-neutral-200 group-hover:text-accent-red transition -mt-2 font-serif">0{{ $loop->iteration }}</span>
                             <div>
                                 <h4 class="text-sm font-bold text-ink group-hover:underline transition leading-tight mb-1 font-serif">{{ $popular->title }}</h4>
-                                <span class="text-[10px] text-neutral-400 font-bold uppercase font-sans">{{ $popular->created_at->format('M d') }}</span>
+                                <span class="text-[10px] text-neutral-400 font-bold uppercase font-sans">{{ $popular->created_at->format('M d, Y') }} {{ $popular->created_at->diffForHumans() }}</span>
                             </div>
                         </a>
                         @endforeach
